@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Хороший, плохой, злой.</h1> 
+    <div>
+        <div>
+            <h2>Кто победил:</h2>
+            <h2 id = "win">tt</h2>
+        </div>
+    </div>
+    
+
+
+    <script>
+        let goodMan = {
+            health: 0,
+            attack: 0,
+            defense: 0,
+        }
+
+        let badMan = {
+            health: 0,
+            attack: 0,
+            defense: 0,
+        }
+
+        let evilMan = {
+            health: 0,
+            attack: 0,
+            defense: 0,
+        }
+
+        goodMan.health = parseInt(prompt('Введите значение здоровья для хорошего чувака: '))
+        goodMan.attack = parseInt(prompt('Введите значение атаки для хорошего чувака: '))
+        goodMan.defense = parseInt(prompt('Введите значение защиты для хорошего чувака: '))
+
+        badMan.health = parseInt(prompt('Введите значение здоровья для плохого чувака: '))
+        badMan.attack = parseInt(prompt('Введите значение атаки для плохого чувака: '))
+        badMan.defense = parseInt(prompt('Введите значение защиты для плохого чувака: '))
+
+        evilMan.health = parseInt(prompt('Введите значение здоровья для злого чувака: '))
+        evilMan.attack = parseInt(prompt('Введите значение атаки для злого чувака: '))
+        evilMan.defense = parseInt(prompt('Введите значение защиты для злого чувака: '))
+
+        const getWinPoints = (player) => {
+            let points = player.health + player.attack + player.defense
+            return points
+        }
+
+        if (getWinPoints(goodMan) > getWinPoints(badMan) && getWinPoints(goodMan) > getWinPoints(evilMan)) {
+            const winElement = document.getElementById("win")
+            const goodElement = document.getElementById("good")
+            winElement.innerHTML = "Победил хороший парень! Набрав очков - " + getWinPoints(goodMan)
+        }
+
+        else if (getWinPoints(badMan) > getWinPoints(goodMan) && getWinPoints(badMan) > getWinPoints(evilMan)) {
+            const winElement = document.getElementById("win")
+            const goodElement = document.getElementById("good")
+            winElement.innerHTML = "Победил злой парень! Набрав очков эффективности- " + getWinPoints(badMan)
+        }
+
+        else {
+            const winElement = document.getElementById("win")
+            const goodElement = document.getElementById("evil")
+            winElement.innerHTML = "Победил злой парень! Набрав очков эффективности- " + getWinPoints(evilMan)
+        }
+        
+    </script>    
+</body>
+</html>
